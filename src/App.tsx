@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./components/Login";
+import EmployeeDashboard from "./components/EmployeeDashboard";
+import ManagerDashboard from "./components/ManagerDashboard";
+import AdminDashboard from "./components/AdminDashboard";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+// Main App component, setting up routing for different views based on user roles
+const App: React.FC = () => {
+    return (
+        <Router>  {/* Router component handles routing in the app */}
+            <Routes> {/* Defines the routes for different pages */}
+                {/* Route for the login page */}
+                <Route path="/" element={<Login />} />
+                
+                {/* Route for the employee dashboard */}
+                <Route path="/employee-dashboard" element={<EmployeeDashboard />} />
+                
+                {/* Route for the manager dashboard */}
+                <Route path="/manager-dashboard" element={<ManagerDashboard />} />
+                
+                {/* Route for the admin dashboard */}
+                <Route path="/admin-dashboard" element={<AdminDashboard />} />
+            </Routes>
+        </Router>
+    );
+};
 
 export default App;
